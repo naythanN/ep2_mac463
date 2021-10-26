@@ -11,10 +11,13 @@
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
     </fragment>
+    <!--<fragment
+        android:id="@+id/MapsFragment"
+        android:name="com.ln.lnplayer.MapsActivity"
+        android:label="@string/title_activity_maps"
+        tools:layout="@layout/activity_maps">
+    </fragment>-->
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.ln.lnplayer.SecondFragment"
