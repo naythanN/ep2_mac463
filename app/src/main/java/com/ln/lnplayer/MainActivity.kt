@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.FrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.ln.lnplayer.databinding.ActivityMainBinding
 import com.ln.lnplayer.fragments.*
@@ -26,9 +27,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(homeFragment)
+        replaceFragment(settingsFragment)
 
-        BottomNavigationView.OnNavigationItemSelectedListener {
+        var bottom_nav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        var frame = findViewById<FrameLayout>(R.id.fragment_container)
+
+        bottom_nav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.ic_home -> replaceFragment(homeFragment)
                 R.id.ic_maps -> replaceFragment(mapsFragment)
