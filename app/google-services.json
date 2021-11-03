@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "845737301013",
+    "project_id": "ln-playerv2",
+    "storage_bucket": "ln-playerv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845737301013:android:4495ecd69513d23c502a1c",
+        "android_client_info": {
+          "package_name": "com.ln.lnplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845737301013-hs5ip1nqj7ehbbvpnscgct2bm8iuo7tm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsvatecGBzVz_KcMOCkdyeZ3LAyWYzxbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845737301013-hs5ip1nqj7ehbbvpnscgct2bm8iuo7tm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
