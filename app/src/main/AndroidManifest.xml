@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LNPlayer">
         <activity
+            android:name=".fragments.PageManager"
+            android:exported="false" />
+        <activity
             android:name=".fragments.GoogleSignInActivity"
             android:exported="false" />
         <!--
