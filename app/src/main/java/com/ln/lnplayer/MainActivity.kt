@@ -1,11 +1,10 @@
 package com.ln.lnplayer
 import android.os.Bundle
-import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.ln.lnplayer.R
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.GoogleAuthProvider
@@ -16,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
-import com.ln.lnplayer.fragments.PageManager
 
 //import android.app.Fragment
 //import android.content.Intent
@@ -86,7 +84,7 @@ import com.ln.lnplayer.fragments.PageManager
 
 private const val WEB_CLIENT_ID = "845737301013-if52ebn3tvtlldrqvhqgmn4ar3usucjg.apps.googleusercontent.com"
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
     lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
     //private lateinit var binding: ActivityGoogleSignIn2Binding
@@ -108,12 +106,13 @@ class MainActivity : Activity() {
         Log.d(TAG, "ONCREATE RODDOUUUUUUUUUUU???????????????????????????????")
 
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_google_sign_in2)
         setContentView(R.layout.activity_main)
 
         auth = Firebase.auth
 
         createRequest()
+
+        findViewById<SignInButton>(R.id.google_signI).visibility = View.VISIBLE
 
         findViewById<SignInButton>(R.id.google_signI).setOnClickListener { signIn() }
     }
@@ -157,8 +156,20 @@ class MainActivity : Activity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        updateUI(currentUser)
+        //updateUI(currentUser)
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.d(TAG, "A activity foi pausada.")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        findViewById<SignInButton>(R.id.google_signI).visibility = View.GONE
+        Log.d(TAG, "A activity foi matada.")
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
@@ -192,13 +203,30 @@ class MainActivity : Activity() {
     // [END signin]
 
     private fun updateUI(user: FirebaseUser?) {
-        if(user != null) {
+        user?.let {
+
             Log.d(TAG, "já logado: ${user}")
             val intent = Intent(this, PageManager::class.java)
             intent.putExtra("Username", user)
             // start your next activity
-            startActivity(intent)
-            View.INVISIBLE
+            //View.INVISIBLE
+            findViewById<SignInButton>(R.id.google_signI).visibility = View.GONE
+            val name = user.displayName
+            val email = user.email
+            val photoUrl = user.photoUrl
+
+            Log.d(TAG, "user: ${name}; ${email}; ${photoUrl}")
+
+            // Check if user's email is verified
+            val emailVerified = user.isEmailVerified
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            val uid = user.uid
+
+            startActivity(intent);
+
         }
     }
 

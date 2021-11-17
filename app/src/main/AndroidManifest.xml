@@ -16,11 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LNPlayer">
         <activity
-            android:name=".fragments.PageManager"
+            android:name=".PageManager"
             android:exported="false" />
-        <activity
+        <!--<activity
             android:name=".fragments.GoogleSignInActivity"
-            android:exported="false" />
+            android:exported="false" />-->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -49,7 +49,6 @@
             android:theme="@style/Theme.LNPlayer.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

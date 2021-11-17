@@ -3,16 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.PageManager">
-
-    <!--<Button
-        android:id="@+id/btn_login"
-        android:text="Login com Google"
-        android:textColor="#FFF"
-        android:padding="20sp"
-        android:background="#397bb2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />-->
+    tools:context=".PageManager">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

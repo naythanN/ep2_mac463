@@ -1,4 +1,4 @@
-package com.ln.lnplayer.fragments
+package com.ln.lnplayer
 //
 //import androidx.appcompat.app.AppCompatActivity
 //import android.os.Bundle
@@ -25,6 +25,7 @@ import com.ln.lnplayer.databinding.ActivityMainBinding
 import com.ln.lnplayer.fragments.*
 import android.util.Log
 import android.view.View
+import com.ln.lnplayer.MainActivity
 import com.ln.lnplayer.R
 
 //
@@ -65,6 +66,12 @@ class PageManager : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+
+        Log.d(TAG, "A activity foi pausada.")
+    }
+
     private fun replaceFragment(fragment: androidx.fragment.app.Fragment){
         if (fragment != null){
             val transaction = supportFragmentManager.beginTransaction()
@@ -74,7 +81,7 @@ class PageManager : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "PageManager"
+        private const val TAG = "PageMngr"
     }
 
 }
