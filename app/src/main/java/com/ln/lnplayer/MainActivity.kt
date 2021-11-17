@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(homeFragment)
+        //replaceFragment(homeFragment)
 
         auth = Firebase.auth
 

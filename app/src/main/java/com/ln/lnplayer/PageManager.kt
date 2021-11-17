@@ -49,7 +49,8 @@ class PageManager : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page_manager)
 
-        replaceFragment(settingsFragment)
+        //replaceFragment(settingsFragment)
+        replaceFragment(homeFragment)
 
         var bottom_nav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         var frame = findViewById<FrameLayout>(R.id.fragment_container)
