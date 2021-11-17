@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.ln.lnplayer.R
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,13 +25,30 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private var teste = "https://storage.googleapis.com/exoplayer-test-media-0/play.mp3"
+    private var sheetDialog: BottomSheetDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val simpleExoPlayer = SimpleExoPlayer.Builder(requireContext()).build().also {
+            exoPlayer ->
+                view.video_view.player = exoPlayer
+        }
+        val mediaItem = MediaItem.fromUri(teste)
+        simpleExoPlayer.addMediaItem(mediaItem)
+        simpleExoPlayer.prepare()
+        simpleExoPlayer.playWhenReady = true
+
     }
 
     override fun onCreateView(
